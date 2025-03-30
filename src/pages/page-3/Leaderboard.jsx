@@ -11,7 +11,7 @@ function Leaderboard() {
     // Fetch initial data
     async function fetchLeaderboard() {
       try {
-        const response = await fetch("https://backend-leaderboard-wyrb.onrender.com/api/leaderboard");
+        const response = await fetch("https://leaderboardadc-copy3.onrender.com/api/leaderboard");
         const data = await response.json();
         setLeaderboard(data.leaderboard);
         setLastUpdated(data.last_updated);
@@ -24,7 +24,7 @@ function Leaderboard() {
     fetchLeaderboard();
 
     // Connect to Socket.IO for real-time updates
-    const socket = io("https://backend-leaderboard-wyrb.onrender.com");
+    const socket = io("https://leaderboardadc-copy3.onrender.com");
 
     socket.on("update_leaderboard", (data) => {
       console.log("Received real-time update:", data);
