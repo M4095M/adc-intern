@@ -107,15 +107,16 @@ function NavBar() {
           >
             Challenges
           </Link>
-          <a
-            href="https://leaderboard-frontend-pink.vercel.app/"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            to="/Leaderboard"
             className="block hover:text-pink-500 transition-all"
-            onClick={() => setMenuOpen(false)}
+            onClick={() => {
+              setActiveLink("leaderboard");
+              setMenuOpen(false);
+            }}
           >
             Leaderboard
-          </a>
+          </Link>
           <a
             href="https://discord.com/"
             target="_blank"
