@@ -7,6 +7,7 @@ function Leaderboard() {
   const [leaderboard, setLeaderboard] = useState([]);
   const [lastUpdated, setLastUpdated] = useState("Never");
   const [error, setError] = useState(null);
+  const [Loading,setLoading]=useState(true);
 
   useEffect(() => {
     // Fetch initial data
@@ -19,6 +20,9 @@ function Leaderboard() {
       } catch (err) {
         console.error("Error fetching leaderboard:", err);
         setError("Failed to fetch leaderboard data");
+      }
+      finally{
+        setLoading(false);
       }
     }
 
@@ -49,6 +53,14 @@ function Leaderboard() {
       <p className="update">
         Last Updated: <span className="last-updated">{lastUpdated}</span>
       </p>
+      {Loading ?(
+           <div className="flex flex-col space-y-5 justify-center items-center h-64">
+            <p className="text-lg text-white"> Please wait for a Moment 😉 </p>
+           {/* Tailwind CSS spinner */}
+           <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-pink-500 border-solid"></div>
+         </div>       
+      ):
+       
       <div className="container mx-auto w-[85%] my-12 bg-white p-5 rounded-xl shadow-lg overflow-x-auto">
         <table>
           <thead>
@@ -71,6 +83,7 @@ function Leaderboard() {
           </tbody>
         </table>
       </div>
+}
     </div>
     </div>
 
