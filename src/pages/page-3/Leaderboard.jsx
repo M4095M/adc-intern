@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { io } from "socket.io-client";
 import "./Leaderboard.css"; // Add the provided CSS styles in this file
+import NavBar from "../../Navbar";
 
 function Leaderboard() {
   const [leaderboard, setLeaderboard] = useState([]);
@@ -39,7 +40,10 @@ function Leaderboard() {
   }, []);
 
   return (
+    <div className="w-full min-h-screen bg-custom-background bg-cover bg-center bg-fixed p-0 m-0 bg-no-repeat">
+        <NavBar></NavBar>
     <div>
+    
       <h1>Challenge 1 Leaderboard</h1>
       {error && <p style={{ color: "red" }}>{error}</p>}
       <p className="update">
@@ -68,6 +72,8 @@ function Leaderboard() {
         </table>
       </div>
     </div>
+    </div>
+
   );
 }
 
