@@ -1,0 +1,20 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Welcome from "./pages/page-1/Welcome";
+import Challenges from "./pages/page-2/Challenges";
+import Leaderboard from "./pages/page-3/Leaderboard";
+
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Welcome />} />
+        <Route path="/Challenges" element={<Challenges />} />
+        <Route path="/Leaderboard" element={<Leaderboard />} />
+
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;
