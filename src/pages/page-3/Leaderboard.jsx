@@ -49,7 +49,7 @@ function Leaderboard() {
       <p className="update">
         Last Updated: <span className="last-updated">{lastUpdated}</span>
       </p>
-      <div className="container">
+      <div className="container mx-auto w-[85%] my-12 bg-white p-5 rounded-xl shadow-lg overflow-x-auto">
         <table>
           <thead>
             <tr>
