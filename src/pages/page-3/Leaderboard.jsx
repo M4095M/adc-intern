@@ -8,19 +8,12 @@ const challengesList = {
   "0": "https://leaderboardadc-copy3.onrender.com/",
   "1": "https://leaderboardadc-copy3.onrender.com/",
   "2": "https://leaderboardadc-copy3.onrender.com/",
-  "3": "https://leaderboardadc-copy3.onrender.com/",
-  "4": "https://leaderboardadc-copy3.onrender.com/",
-  "5": "https://leaderboardadc-copy3.onrender.com/",
 };
 
 // Mapping for competition IDs to competition names
 const competitionNames = {
-  "0": "digit-recognizer",
-  "1": "house-prices-advanced-regression-techniques",
-  "2": "digit-recognizer",
-  "3":"digit-recognizer",
-  "4": "digit-recognizer",
-  "5":"digit-recognizer",
+  "1": "byu-cs-270-midterm-2-classification-competition",
+  "2": "bert-classification-ioai",
 };
 
 function Leaderboard({ c }) {
@@ -41,6 +34,69 @@ function Leaderboard({ c }) {
     }
 
     async function fetchLeaderboard() {
+      if (c === "0") {
+        try {
+          const responses = await Promise.all(
+            Object.entries(challengesList)
+              .filter(([key]) => key !== "0") // Exclude challenge "0" itself
+              .map(([key, url]) =>
+                fetch(`${url}/api/leaderboard/${competitionNames[key]}`).then(res => res.json())
+              )
+          );
+
+          const allEntries = responses.flatMap(data => data.leaderboard);
+
+          if (allEntries.length === 0) {
+            setLeaderboard([]);
+            setError("No data available for averaging.");
+            return;
+          }
+
+          // Group scores by team name
+          const teamScores = {};
+          allEntries.forEach(({ team, score, submission_date }) => {
+            if (!teamScores[team]) {
+              teamScores[team] = { totalScore: 0, count: 0, latestSubmission: "1970-01-01" };
+            }
+            teamScores[team].totalScore += score;
+            console.log(`Team: ${team}, Total Score: ${teamScores[team].totalScore}, Count: ${teamScores[team].count}, Average: ${(teamScores[team].totalScore / teamScores[team].count)}`);
+            teamScores[team].count += 1;
+            if (new Date(submission_date) > new Date(teamScores[team].latestSubmission)) {
+              teamScores[team].latestSubmission = submission_date;
+            }
+          });
+
+          // Calculate averages
+          const averagedLeaderboard = Object.entries(teamScores).map(([team, { totalScore, count, latestSubmission }]) => ({
+            rank: "-",
+            team,
+            submission_date: latestSubmission,
+            score: (parseFloat(totalScore) / (Object.keys(challengesList).length - 1)).toFixed(4),
+          }));
+
+          // Sort by score descending
+          averagedLeaderboard.sort((a, b) => b.score - a.score);
+
+          // Assign ranks dynamically
+          let rank = 1;
+          for (let i = 0; i < averagedLeaderboard.length; i++) {
+            if (i > 0 && averagedLeaderboard[i].score !== averagedLeaderboard[i - 1].score) {
+              rank = i + 1;
+            }
+            averagedLeaderboard[i].rank = rank;
+          }
+
+          setLeaderboard(averagedLeaderboard);
+          setLastUpdated(new Date().toLocaleString());
+        } catch (err) {
+          console.error("Error calculating average leaderboard:", err);
+          setError("Failed to calculate average leaderboard.");
+        } finally {
+          setLoading(false);
+        }
+        return;
+      }
+
       try {
         const response = await fetch(`${backendUrl}/api/leaderboard/${competitionName}`); // Include competition ID in the route
         const data = await response.json();

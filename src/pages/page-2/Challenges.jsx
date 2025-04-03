@@ -21,30 +21,6 @@ function Challenges() {
       
       challengeNum:"2",
     },
-    {
-      title: "Challenge 3",
-      description:
-        "Think fast, code faster! This challenge pushes your problem-solving and coding skills to their limits. With a timer ticking down, you'll need to solve as many coding puzzles as possible before the clock hits zero.",
-      weight: "8kg",
-      challengeLink: "https://www.kaggle.com/",
-      challengeNum:"3",
-    },
-    {
-      title: "Challenge 4",
-      description:
-        "Think fast, code faster! This challenge pushes your problem-solving and coding skills to their limits. With a timer ticking down, you'll need to solve as many coding puzzles as possible before the clock hits zero.",
-      weight: "6kg",
-      challengeLink: "https://www.kaggle.com/",
-      challengeNum:"4",
-    },
-    {
-      title: "Challenge 5",
-      description:
-        "Think fast, code faster! This challenge pushes your problem-solving and coding skills to their limits. With a timer ticking down, you'll need to solve as many coding puzzles as possible before the clock hits zero.",
-      weight: "4kg",
-      challengeLink: "https://www.kaggle.com/",
-      challengeNum:"5",
-    },
   ];
 
   return (
