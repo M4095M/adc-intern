@@ -1,13 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-function ChallengeCard({ title, description, weight, challengeLink }) {
+function ChallengeCard({ title, description, weight, challengeLink,challengeNum }) {
   const handleButtonClick = () => {
     if (challengeLink) {
-      window.location.href = challengeLink; // Redirects to the challengeLink
+      window.location.href = challengeLink; // Redirect to the provided link
     } else {
       alert("No link provided for this challenge!");
     }
   };
+  
 
   return (
     <div className="p-[1px] bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg">
@@ -24,10 +26,11 @@ function ChallengeCard({ title, description, weight, challengeLink }) {
         </p>
 
         {/* Footer */}
-        <div className="flex flex-row justify-between items-center">
+        <div className="flex flex-col justify-between items-center gap-6">
+        <div className="flex flex-row justify-between gap-16 items-baseline">
           {/* Start Button */}
           <button
-            className="bg-pink-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
+            className="bg-pink-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition w-20"
             onClick={handleButtonClick}
           >
             Start
@@ -38,6 +41,20 @@ function ChallengeCard({ title, description, weight, challengeLink }) {
             <span className="text-violet-400">Weight: </span>
             {weight || "N/A"}
           </p>
+        </div>
+        <button
+            className="bg-pink-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
+            
+          >
+          <Link
+            to={`/Leaderboard-${challengeNum}`}
+            className="hover:text-pink-500 transition-all"
+            
+          >
+            Leaderboard
+          </Link>
+            
+          </button>
         </div>
       </div>
     </div>
