@@ -3,12 +3,24 @@ import { io } from "socket.io-client";
 import "./Leaderboard.css"; // Make sure styles are correct in this file
 import NavBar from "../../Navbar";
 
+// Challenges list with backend URLs
 const challengesList = {
-  "1": "https://leaderboardadc-copy3.onrender.com",
-  "2": "https://leaderboardadc-copy3.onrender.com",
-  "3": "https://leaderboardadc-copy3.onrender.com",
-  "4": "https://leaderboardadc-copy3.onrender.com",
-  "5": "https://leaderboardadc-copy3.onrender.com",
+  "0": "https://leaderboardadc-copy3.onrender.com/",
+  "1": "https://leaderboardadc-copy3.onrender.com/",
+  "2": "https://leaderboardadc-copy3.onrender.com/",
+  "3": "https://leaderboardadc-copy3.onrender.com/",
+  "4": "https://leaderboardadc-copy3.onrender.com/",
+  "5": "https://leaderboardadc-copy3.onrender.com/",
+};
+
+// Mapping for competition IDs to competition names
+const competitionNames = {
+  "0": "digit-recognizer",
+  "1": "house-prices-advanced-regression-techniques",
+  "2": "digit-recognizer",
+  "3":"digit-recognizer",
+  "4": "digit-recognizer",
+  "5":"digit-recognizer",
 };
 
 function Leaderboard({ c }) {
@@ -17,7 +29,9 @@ function Leaderboard({ c }) {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const backendUrl = challengesList[c]; // Dynamically assign backend URL based on challenge number
+  const backendUrl = challengesList[c];
+
+  const competitionName = competitionNames[c]; // Get the competition name from the dictionary // Get backend URL based on competition ID
 
   useEffect(() => {
     if (!backendUrl) {
@@ -28,13 +42,13 @@ function Leaderboard({ c }) {
 
     async function fetchLeaderboard() {
       try {
-        const response = await fetch(`${backendUrl}/api/leaderboard`);
+        const response = await fetch(`${backendUrl}/api/leaderboard/${competitionName}`); // Include competition ID in the route
         const data = await response.json();
         setLeaderboard(data.leaderboard);
         setLastUpdated(data.last_updated);
       } catch (err) {
         console.error("Error fetching leaderboard:", err);
-        setError(`Failed to fetch leaderboard data from url ${backendUrl}/api/leaderboard`);
+        setError(`Failed to fetch leaderboard data from url ${backendUrl}/api/leaderboard/${competitionName}`);
       } finally {
         setLoading(false);
       }
@@ -54,13 +68,14 @@ function Leaderboard({ c }) {
     return () => {
       socket.disconnect(); // Cleanup socket connection when component unmounts
     };
-  }, [backendUrl]); // Dependency array will re-run this effect when `backendUrl` changes
+  }, [backendUrl, c]); // Dependency array includes `c` to re-run the effect when `c` changes
+
 
   return (
     <div className="w-full min-h-screen bg-custom-background bg-cover bg-center bg-fixed p-0 m-0 bg-no-repeat">
       <NavBar />
       <div>
-        <h1>Challenge {c} Leaderboard</h1>
+        <h1>{competitionName} Leaderboard</h1> {/* Display the competition name */}
         {error && <p style={{ color: "red" }}>{error}</p>}
         <p className="update">
           Last Updated: <span className="last-updated">{lastUpdated}</span>

@@ -10,6 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Welcome />} />
         <Route path="/Challenges" element={<Challenges />} />
+        <Route path="/Leaderboard" element={<Leaderboard c="0" />} />
         <Route path="/Leaderboard-1" element={<Leaderboard c="1" />} />
         <Route path="/Leaderboard-2" element={<Leaderboard c="2" />} />
         <Route path="/Leaderboard-3" element={<Leaderboard c="3" />} />
