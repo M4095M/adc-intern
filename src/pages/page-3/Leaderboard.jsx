@@ -12,8 +12,8 @@ const challengesList = {
 
 // Mapping for competition IDs to competition names
 const competitionNames = {
-  "1": "adc-test",
-  "2": "bert-classification-ioai",
+  "1": "adc-4-0-intern-01",
+  "2": "adc-4-0-intern-02",
 };
 
 function Leaderboard({ c }) {

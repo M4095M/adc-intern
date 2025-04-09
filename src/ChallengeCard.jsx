@@ -13,7 +13,7 @@ function ChallengeCard({ title, description, weight, challengeLink,challengeNum 
 
   return (
     <div className="p-[1px] bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg">
-      <div className="bg-black rounded-lg p-7 min-h-[250px]">
+      <div className="bg-black rounded-lg flex flex-col justify-between p-7 min-h-full">
         {/* Title */}
         <h1 className="text-2xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-violet-400">
           {title || "Challenge number 1"}

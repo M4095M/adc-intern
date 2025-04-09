@@ -70,7 +70,7 @@ function NavBar() {
             Leaderboard
           </Link>
           <a
-            href="https://discord.com/"
+            href="https://discord.gg/jkeDFvev"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-pink-500 transition-all"
@@ -82,7 +82,7 @@ function NavBar() {
 
       {/* Countdown Timer */}
       <div className="mt-4 md:mt-0 md:flex md:justify-center">
-        <Countdown date={new Date("2025-12-31T23:59:59")} renderer={renderer} />
+        <Countdown date={new Date("2025-04-10T15:59:59")} renderer={renderer} />
       </div>
 
       {/* Mobile Menu Dropdown */}
