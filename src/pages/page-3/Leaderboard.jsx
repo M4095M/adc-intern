@@ -12,7 +12,7 @@ const challengesList = {
 
 // Mapping for competition IDs to competition names
 const competitionNames = {
-  "1": "byu-cs-270-midterm-2-classification-competition",
+  "1": "adc-test",
   "2": "bert-classification-ioai",
 };
 

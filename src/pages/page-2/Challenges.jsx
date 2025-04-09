@@ -5,20 +5,19 @@ function Challenges() {
   // Array of challenge data
   const challenges = [
     {
-      title: "Challenge 1",
+      title: "ADC4.0 -intern- 01",
       description:
-        "Think fast, code faster! This challenge pushes your problem-solving and coding skills to their limits. With a timer ticking down, you'll need to solve as many coding puzzles as possible before the clock hits zero.",
+        " In this challenge, your task is to predict whether the away team wins a football match based on pre-match statistics for both teams. Good luck and enjoy the game!",
       weight: "5kg",
-      challengeLink: "https://www.kaggle.com/",
+      challengeLink: "https://www.kaggle.com/t/f50c00eaf34148ad9a1db9c093683273",
       challengeNum:"1",
     },
     {
-      title: "Challenge 2",
+      title: "ADC4.0 -intern- 02",
       description:
-        "Think fast, code faster! This challenge pushes your problem-solving and coding skills to their limits. With a timer ticking down, you'll need to solve as many coding puzzles as possible before the clock hits zero.",
-      weight: "3kg",
-      challengeLink: "https://www.kaggle.com/",
-      
+        "In this challenge, your task is to predict the groundwater level category (Very Low, Low, Average, or Very High) for a given piezometric station based on various features like location, water quality, population, and more. Good luck and enjoy the learning process!",
+      weight: "5kg",
+      challengeLink: "https://www.kaggle.com/t/c3290c6d0a844179a8d665e07562677d",  
       challengeNum:"2",
     },
   ];
