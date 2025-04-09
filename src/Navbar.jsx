@@ -62,13 +62,14 @@ function NavBar() {
           >
             Challenges
           </Link>
+          {/* Leaderboard Link 
           <Link
             to="/Leaderboard"
             className={`hover:text-pink-500 transition-all ${activeLink === "leaderboard" ? "text-pink-500" : ""}`}
             onClick={() => setActiveLink("leaderboard")}
           >
             Leaderboard
-          </Link>
+          </Link>*/}
           <a
             href="https://discord.gg/jkeDFvev"
             target="_blank"

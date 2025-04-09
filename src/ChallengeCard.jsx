@@ -41,11 +41,12 @@ function ChallengeCard({ title, description, weight, challengeLink,challengeNum 
             <span className="text-violet-400">Weight: </span>
             {weight || "N/A"}
           </p>
-        </div>
+        </div>{/* Leaderboard Link 
         <button
             className="bg-pink-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
             
           >
+            
           <Link
             to={`/Leaderboard-${challengeNum}`}
             className="hover:text-pink-500 transition-all"
@@ -53,8 +54,8 @@ function ChallengeCard({ title, description, weight, challengeLink,challengeNum 
           >
             Leaderboard
           </Link>
-            
-          </button>
+           
+          </button> */}
         </div>
       </div>
     </div>
